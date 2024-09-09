@@ -1,0 +1,22 @@
+services:
+  php:
+    container_name: 'fav.php.project'
+
+    build:
+      context: .
+      target: app_dev
+      args:
+        ENVIRONMENT: dev
+
+    ports:
+      - 8080:8080
+
+    volumes:
+      - .:/app
+
+  redis:
+    container_name: 'fav.db.redis'
+    image: redis:5
+
+    ports:
+      - 6379:6379

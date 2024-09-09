@@ -18,8 +18,12 @@
     </php>
 
     <testsuites>
-        <testsuite name="Project Test Suite">
-            <directory>tests</directory>
+        <testsuite name="Test Core Bounded Context">
+            <directory>./tests/Core</directory>
+        </testsuite>
+
+        <testsuite name="Test Shared Context">
+            <directory>./tests/Shared</directory>
         </testsuite>
     </testsuites>
 
@@ -27,6 +31,10 @@
         <include>
             <directory suffix=".php">src</directory>
         </include>
+        <exclude>
+            <!-- It is only to load some initial data to the application -->
+            <file>./src/Shared/Infrastructure/Console/Symfony/RequestLoaderCommand.php</file>
+        </exclude>
     </coverage>
 
     <listeners>
